@@ -5,34 +5,31 @@
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <input id="psw" onkeyup="0617()">
-        <div id="message"></div>
+        <input id="email">
+        <input id="psw" onkeydown="()">
+        <div id="messageNB"></div>
+        <div id="messageLC"></div>
     </body>
     <script>
-        // get pasword value from input
-        let psw = document.getElementById("psw").value;
-
-        // state pattern that we want to match
+        function checkNB() {
+        //get the pswValue from input
+        let pswValue = document.getElementById('psw').value;
+        //we will tell the meshin what were looking for
+        let numberPattern = /[0-9]/g;
+        //we will tell the meshin to check numberPattern against pswValue
+        let numberAnswer = numberPattern.test(pswValue);
+        //we will tell user if it passed or failed
+        document.getElementById('messageNB').innerHTML = numberAnswer;
+        }
+        function checkLC() {
+        //get the pswValue from input
+        let pswValue = document.getElementById('psw').value;
+        //we will tell the meshin what were looking for
         let lowerCasePattern = /[a-z]/g;
-        // state pattern that we want to match
-        let upperCasePattern = /[A-Z]/g;
-
-        // check if password match lowerCasePattern
-        let answer = lowerCasePattern.test(psw);
-        // check if password match upperCasePattern
-        let answer = upperCasePattern.test(psw);
-
-        //display if password has number or not
-        document.getElementById("message").innerHTML = answer;
-
-        // if answer is false turn div red via class
-        if (answer === false){
-            document.getElementById("message").className = "bg-red-500"
+        //we will tell the meshin to check lowerCasePattern
+        let lowerCaseAnswer = lowerCasePattern.test(pswValue);
+        //we will tell the user if it passed or failed
+        document.getElementById('messageLC').innerHTML = lowerCaseAnswer;   
         }
-        // if answer is true turn div green via class
-        else if (answer === true){
-            document.getElementById("message").className = "bg-green-500"
-        }
-
     </script>
 </html>
