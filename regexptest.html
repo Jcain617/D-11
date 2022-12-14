@@ -5,10 +5,12 @@
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <input id="email">
-        <input id="psw" onkeydown="()">
+        <input id="email" placeholder="email">
+        <input id="psw" placeholder="password" onkeydown="checkLen()">
         <div id="messageNB"></div>
         <div id="messageLC"></div>
+        <div id="messageUC"></div>
+        <button>Submit</button>
     </body>
     <script>
         function checkNB() {
@@ -24,12 +26,30 @@
         function checkLC() {
         //get the pswValue from input
         let pswValue = document.getElementById('psw').value;
-        //we will tell the meshin what were looking for
+        //we will tell the meshin what we're looking for
         let lowerCasePattern = /[a-z]/g;
         //we will tell the meshin to check lowerCasePattern
         let lowerCaseAnswer = lowerCasePattern.test(pswValue);
         //we will tell the user if it passed or failed
         document.getElementById('messageLC').innerHTML = lowerCaseAnswer;   
+        }
+        function checkUC() {
+        //get the pswValue from input
+        let pswValue = document.getElementById('psw').value;
+        //we will tell the meshin what we're looking for
+        let upperCasePattern = /[A-Z]/g;
+        //we will tell the meshin to check upperCasePattern
+        let upperCaseAnswer = upperCasePattern.test(pswValue);
+        //we will tell the user if it passed or failed
+        document.getElementById('messageUC').innerHTML = upperCaseAnswer; 
+        }
+        function checkLen(){
+        //get another value from another input
+        let pswValue = document.getElementById('psw').value;
+        //we will tell the meshin what we're looking for
+        let numberPattern = /[>=8]/g;"you must have a minimum of eight numbers";
+        //we will tell the user if they met the requirement
+        document.getElementById('checkLen').innerHTML = numberPatternAnswer;
         }
     </script>
 </html>
